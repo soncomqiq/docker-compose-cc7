@@ -1,0 +1,20 @@
+version: '3'
+services:
+        backend-ct:
+                build: ./backend-fb-cc7
+                restart: always
+                ports:
+                        - "8000:8000"
+        frontend-ct:
+                build: ./frontend-fb-cc7
+                restart: always
+                ports:
+                        - "3000:3000"
+                stdin_open: true
+        database-ct:
+                image: 'mysql'
+                container_name: db
+                restart: always
+                environment:
+                        MYSQL_ROOT_PASSWORD: 12345678
+                        MYSQL_DATABASE: fakebook-cc7
